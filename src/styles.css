@@ -1,0 +1,107 @@
+body {
+  background-color: rgba(41, 92, 116, 0.4);
+  font-family: "Poppins", sans-serif;
+}
+
+.main {
+  background: center/200% url("../img/pink_clouds.jpg");
+  color: #2d4059;
+  display: block;
+  margin: 20px auto;
+  max-width: 95%;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.main-form {
+  margin-top: 20px;
+}
+
+.current-location {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  text-transform: capitalize;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.current-location2 {
+  list-style: none;
+  padding-left: 0px;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 20px;
+}
+
+#button-weather {
+  margin-top: 20px;
+}
+
+.temperature {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.units {
+  position: relative;
+  top: -24px;
+}
+
+.sun-icon {
+  display: block;
+  text-align: center;
+  margin: 0 0 40px 0;
+  width: 120px;
+}
+
+.form-field {
+  box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.2);
+}
+
+.btn {
+  background: rgba(224, 223, 223, 0.3);
+  border: none;
+  color: rgb(16, 12, 51);
+}
+.btn:hover {
+  background: rgba(161, 161, 161, 0.3);
+  border: none;
+  color: white;
+}
+
+.five-day-weather {
+  /* background: rgba(251, 245, 194, 0.3); */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0px;
+}
+
+.days-weather {
+  list-style: none;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.footer {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 13px;
+  font-weight: 400;
+}
+hr {
+  color: white;
+}
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: #eccdd4;
+}
