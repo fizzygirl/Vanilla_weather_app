@@ -4,7 +4,7 @@ body {
 }
 
 .main {
-  background: left/300% url("../img/mountains.jpg");
+  background: left/150% url("../img/mountains.jpg");
   color: whitesmoke;
   display: block;
   margin: 20px auto;
@@ -77,20 +77,6 @@ body {
   background: rgba(161, 161, 161, 0.3);
   border: none;
   color: white;
-}
-
-.five-day-weather {
-  border: none;
-  border-radius: 8px;
-  padding: 10px 0px;
-}
-
-.days-weather {
-  list-style: none;
-  padding: 0px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 30px;
 }
 
 .footer {

@@ -42,6 +42,7 @@ function formatDate(){
 function searchcity(event) {
     event.preventDefault();
     let city = document.querySelector("#city-input").value;
+    
     if (city) {
       search(city);
     } else {
