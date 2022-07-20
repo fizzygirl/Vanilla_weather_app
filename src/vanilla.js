@@ -57,12 +57,12 @@ function searchcity(event) {
   }
 
   function displayWeatherCondition(response) {
-    console.log(response);
     document.querySelector(
       "h1"
     ).innerHTML = `${response.data.data[0].city_name}, ${response.data.data[0].country_code}`;
+    celsiusTemp = response.data.data[0].app_temp;
     document.querySelector("#temp").innerHTML = Math.round(
-      response.data.data[0].app_temp
+        celsiusTemp
     );
     document.querySelector("#weather-precipitation").innerHTML = Math.round(
         response.data.data[0].precip
@@ -91,23 +91,39 @@ function searchcity(event) {
   }
 
   function showcurrentTemp(response) {
-    let temperature = Math.round(response.data.data[0].app_temp);
+    celsiusTemp = response.data.data[0].app_temp;
+    let temperature = Math.round(celsiusTemp);
     let city = response.data.data[0].city_name;
     let country = response.data.data[0].country_code;
     let weatherDes = response.data.data[0].weather.description;
     let precipitation = response.data.data[0].precip;
     let weatherhumidity = response.data.data[0].rh;
     let weatherwind = Math.round(response.data.data[0].wind_spd);
-    console.log(city);
+
     h1.innerHTML = `${city}, ${country}`;
     temp.innerHTML = `${temperature}`;
     weatherDescr.innerHTML = `${weatherDes}`;
     precip.innerHTML = `${precipitation}`;
     weatherHum.innerHTML = `${weatherhumidity}`;
     weatherWind.innerHTML = `${weatherwind}`;
-    console.log(response);
     iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
     iconElement.setAttribute("alt", response.data.data[0].weather.description);
+  }
+
+  function showFahrenheitTemp(event){
+    event.preventDefault();
+    celsiuslink.classList.remove("active");
+    fahrenheitlink.classList.add("active");
+    let fahrenheitTemp = Math.round(celsiusTemp*(9/5))+32;
+    temp.innerHTML = `${fahrenheitTemp}`;
+    
+  }
+
+  function showcelsiusTemp(event){
+    event.preventDefault();
+    fahrenheitlink.classList.remove("active");
+    celsiuslink.classList.add("active");
+    temp.innerHTML = Math.round(celsiusTemp);
   }
 
 let date = new Date();
@@ -122,10 +138,17 @@ let precip = document.querySelector("#weather-precipitation")
 let weatherHum = document.querySelector("#weather-humidity");
 let weatherWind = document.querySelector("#weather-wind");
 let iconElement = document.querySelector("#icon");
+let celsiusTemp = null;
 
 form.addEventListener("submit", searchcity);
 
 let buttonCurrent = document.querySelector("#currentcity");
 buttonCurrent.addEventListener("submit", retrievePosition);
+
+let fahrenheitlink = document.querySelector("#fahrenheit-link");
+fahrenheitlink.addEventListener("click", showFahrenheitTemp);
+
+let celsiuslink = document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", showcelsiusTemp);
 
 search("Odesa");

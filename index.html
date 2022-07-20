@@ -34,6 +34,7 @@
                 class="form-control shadow-sm"
                 placeholder="Enter city . ."
                 id="city-input"
+                autocomplete="off"
               />
             </div>
             <div class="col-3">
@@ -62,7 +63,11 @@
               <h1></h1>
               <ul class="current-location">
                 <li id="currentday"></li>
-                <span class="temperature" id="temp"></span><span class="units">°C | <a href="#">°F</a></span>
+                <span class="temperature" id="temp"></span>
+                <span class="units">
+                  <a href="#" id="celsius-link" class="active" >°C</a>|
+                  <a href="#" id="fahrenheit-link">°F</a>
+                </span>
                 <li id="weather-description"></li>
               </ul>
             </div>
