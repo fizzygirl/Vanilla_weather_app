@@ -1,11 +1,11 @@
 body {
-  background-color: rgba(41, 92, 116, 0.4);
+  background-color: rgba(122, 110, 122, 0.4);
   font-family: "Poppins", sans-serif;
 }
 
 .main {
-  background: center/200% url("../img/pink_clouds.jpg");
-  color: #2d4059;
+  background: left/300% url("../img/mountains.jpg");
+  color: whitesmoke;
   display: block;
   margin: 20px auto;
   max-width: 95%;

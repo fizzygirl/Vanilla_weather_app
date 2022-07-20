@@ -78,6 +78,38 @@ function searchcity(event) {
       iconElement.setAttribute("alt", response.data.data[0].weather.description);
   }
 
+  function retrievePosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+
+  function showPosition(position) {
+    let apiKey = "cb95f1d4c61a4b8897e33eeb2cc78c45";
+    let apiUrl = `https://api.weatherbit.io/v2.0/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=${apiKey}`;
+
+    axios.get(apiUrl).then(showcurrentTemp);
+  }
+
+  function showcurrentTemp(response) {
+    let temperature = Math.round(response.data.data[0].app_temp);
+    let city = response.data.data[0].city_name;
+    let country = response.data.data[0].country_code;
+    let weatherDes = response.data.data[0].weather.description;
+    let precipitation = response.data.data[0].precip;
+    let weatherhumidity = response.data.data[0].rh;
+    let weatherwind = Math.round(response.data.data[0].wind_spd);
+    console.log(city);
+    h1.innerHTML = `${city}, ${country}`;
+    temp.innerHTML = `${temperature}`;
+    weatherDescr.innerHTML = `${weatherDes}`;
+    precip.innerHTML = `${precipitation}`;
+    weatherHum.innerHTML = `${weatherhumidity}`;
+    weatherWind.innerHTML = `${weatherwind}`;
+    console.log(response);
+    iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
+    iconElement.setAttribute("alt", response.data.data[0].weather.description);
+  }
+
 let date = new Date();
 let currentday = document.querySelector("#currentday");
 currentday.innerHTML = formatDate();
@@ -86,15 +118,14 @@ let h1 = document.querySelector("h1");
 let form = document.querySelector("#entercity");
 let temp = document.querySelector("#temp");
 let weatherDescr = document.querySelector("#weather-description");
+let precip = document.querySelector("#weather-precipitation")
 let weatherHum = document.querySelector("#weather-humidity");
 let weatherWind = document.querySelector("#weather-wind");
 let iconElement = document.querySelector("#icon");
 
 form.addEventListener("submit", searchcity);
 
+let buttonCurrent = document.querySelector("#currentcity");
+buttonCurrent.addEventListener("submit", retrievePosition);
+
 search("Odesa");
-
-
-
-
-
