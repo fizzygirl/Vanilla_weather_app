@@ -23,6 +23,7 @@ function formatDate() {
     "December",
   ];
 
+  let now = new Date();
   let dayofweek = days[now.getDay()];
   let monthofweek = months[now.getMonth()];
 
@@ -75,7 +76,6 @@ function searchcity(event) {
 }
 
 let currentday = document.querySelector("#currentday");
-let now = new Date();
 
 currentday.innerHTML = formatDate();
 
