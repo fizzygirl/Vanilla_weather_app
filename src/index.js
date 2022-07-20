@@ -76,7 +76,6 @@ function searchcity(event) {
 }
 
 let currentday = document.querySelector("#currentday");
-
 currentday.innerHTML = formatDate();
 
 let h1 = document.querySelector("h1");
