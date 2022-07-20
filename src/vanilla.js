@@ -39,6 +39,30 @@ function formatDate(){
       
 }
 
+function displayForecast(){
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHTML = `<div class="row">`;
+    let days = ["Mon", "Tue", "Wed","Thu","Fri"];
+    days.forEach(function (day) {
+        forecastHTML = 
+        forecastHTML + 
+        `
+            <div class="col">        
+            <div class="weather-forecast-day" >${day}</div> 
+            <div class="weather-forecast-date"> 20.06 </div>
+            <img src="./img/sunny.png" alt="sunny" width="45" />
+            <div class="weather-forecast-temp">
+            <span class="weather-forecast-temp-max">26°C</span>
+            <span class="weather-forecast-temp-min">18°C</span> 
+            </div> 
+            </div> 
+        `;
+    })
+    
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}
+
 function searchcity(event) {
     event.preventDefault();
     let city = document.querySelector("#city-input").value;
@@ -152,3 +176,4 @@ let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", showcelsiusTemp);
 
 search("Odesa");
+displayForecast();

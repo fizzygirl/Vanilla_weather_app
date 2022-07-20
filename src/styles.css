@@ -83,17 +83,15 @@ h1{
 }
 
 .five-day-weather {
-  border: none;
-  border-radius: 8px;
   padding: 10px 0px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 20px;
 }
 
-.days-weather {
-  list-style: none;
-  padding: 0px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 30px;
+.weather-forecast-temp-min{
+  opacity: 0.6;
 }
 
 .footer {
