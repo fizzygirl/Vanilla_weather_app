@@ -39,10 +39,6 @@ h1{
   line-height: 20px;
 }
 
-#button-weather {
-  margin-top: 20px;
-}
-
 .temperature {
   font-size: 48px;
   font-weight: 400;
@@ -75,6 +71,8 @@ h1{
   background: rgba(224, 223, 223, 0.3);
   border: none;
   color: rgb(16, 12, 51);
+  font-size: 14px;
+  text-align: center;
 }
 .btn:hover {
   background: rgba(161, 161, 161, 0.3);
