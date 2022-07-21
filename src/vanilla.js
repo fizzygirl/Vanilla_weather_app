@@ -39,27 +39,46 @@ function formatDate(){
       
 }
 
+function formatDay(timestamp){
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+  ];
+
+  return days[day];
+}
+
 function displayForecast(response){
   console.log(response.data.data);
+  let forecast = response.data.data;
+
     let forecastElement = document.querySelector("#forecast");
     
-    let days = ["Mon", "Tue", "Wed","Thu","Fri"];
+    // let days = ["Mon", "Tue", "Wed","Thu","Fri"];
     let forecastHTML = `<div class="row">`;
     
-    days.forEach(function (day) {
+    forecast.forEach(function (forecastDay, index) {
+      if (index < 5){
         forecastHTML = 
         forecastHTML + 
         `
             <div class="col">        
-            <div class="weather-forecast-day" >${day}</div> 
-            <div class="weather-forecast-date"> 20.06 </div>
-            <img src="./img/sunny.png" alt="sunny" width="45" />
+            <div class="weather-forecast-day" >${formatDay(forecastDay.ts)}</div> 
+            <img src="https://www.weatherbit.io/static/img/icons/${forecastDay.weather.icon}.png" alt="https://www.weatherbit.io/static/img/icons/${forecastDay.weather.description}.png" width="45"/>
             <div class="weather-forecast-temp">
-            <span class="weather-forecast-temp-max">26°C</span>
-            <span class="weather-forecast-temp-min">18°C</span> 
+            <span class="weather-forecast-temp-max">${Math.round(forecastDay.max_temp)}°</span>/<span class="weather-forecast-temp-min">${Math.round(forecastDay.min_temp)}°</span>
             </div> 
             </div> 
         `;
+      }
     })
     
     forecastHTML = forecastHTML + `</div>`;
@@ -102,7 +121,6 @@ function searchcity(event) {
     
     iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
     iconElement.setAttribute("alt", response.data.data[0].weather.description);
-
     // console.log(response.data.data[0]);
     getForecast(response.data.data[0]);
   }
@@ -137,6 +155,8 @@ function searchcity(event) {
     weatherWind.innerHTML = `${weatherwind}`;
     iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
     iconElement.setAttribute("alt", response.data.data[0].weather.description);
+
+    getForecast(response.data.data[0]);
   }
 
   function showFahrenheitTemp(event){
