@@ -39,7 +39,8 @@ function formatDate(){
       
 }
 
-function displayForecast(){
+function displayForecast(response){
+  console.log(response.data.data);
     let forecastElement = document.querySelector("#forecast");
     
     let days = ["Mon", "Tue", "Wed","Thu","Fri"];
@@ -65,6 +66,14 @@ function displayForecast(){
     forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates){
+  // console.log(coordinates);
+  let apiKey = "cb95f1d4c61a4b8897e33eeb2cc78c45";
+  let apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&key=${apiKey}`;
+    // console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
+}
+
 function searchcity(event) {
     event.preventDefault();
     let city = document.querySelector("#city-input").value;
@@ -83,25 +92,19 @@ function searchcity(event) {
   }
 
   function displayWeatherCondition(response) {
-    document.querySelector(
-      "h1"
-    ).innerHTML = `${response.data.data[0].city_name}, ${response.data.data[0].country_code}`;
+    document.querySelector("h1").innerHTML = `${response.data.data[0].city_name}, ${response.data.data[0].country_code}`;
     celsiusTemp = response.data.data[0].app_temp;
-    document.querySelector("#temp").innerHTML = Math.round(
-        celsiusTemp
-    );
-    document.querySelector("#weather-precipitation").innerHTML = Math.round(
-        response.data.data[0].precip
-      );
-    document.querySelector("#weather-humidity").innerHTML =
-      response.data.data[0].rh;
-    document.querySelector("#weather-wind").innerHTML = Math.round(
-      response.data.data[0].wind_spd
-    );
-    document.querySelector("#weather-description").innerHTML =
-      response.data.data[0].weather.description;
-      iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
-      iconElement.setAttribute("alt", response.data.data[0].weather.description);
+    document.querySelector("#temp").innerHTML = Math.round(celsiusTemp);
+    document.querySelector("#weather-precipitation").innerHTML = Math.round(response.data.data[0].precip);
+    document.querySelector("#weather-humidity").innerHTML =response.data.data[0].rh;
+    document.querySelector("#weather-wind").innerHTML = Math.round(response.data.data[0].wind_spd);
+    document.querySelector("#weather-description").innerHTML =response.data.data[0].weather.description;
+    
+    iconElement.setAttribute("src", `https://www.weatherbit.io/static/img/icons/${response.data.data[0].weather.icon}.png`);
+    iconElement.setAttribute("alt", response.data.data[0].weather.description);
+
+    // console.log(response.data.data[0]);
+    getForecast(response.data.data[0]);
   }
 
   function retrievePosition(event) {
@@ -178,4 +181,3 @@ let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", showcelsiusTemp);
 
 search("Odesa");
-displayForecast();
