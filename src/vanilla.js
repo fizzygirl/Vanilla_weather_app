@@ -66,7 +66,9 @@ function displayForecast(response){
     let forecastHTML = `<div class="row">`;
     
     forecast.forEach(function (forecastDay, index) {
-      if (index < 5){
+      let celsiusTempmax = forecastDay.max_temp;
+      let celsiusTempmin = forecastDay.min_temp;
+      if (index < 6 && index > 0 ){
         forecastHTML = 
         forecastHTML + 
         `
@@ -74,7 +76,7 @@ function displayForecast(response){
             <div class="weather-forecast-day" >${formatDay(forecastDay.ts)}</div> 
             <img src="https://www.weatherbit.io/static/img/icons/${forecastDay.weather.icon}.png" alt="https://www.weatherbit.io/static/img/icons/${forecastDay.weather.description}.png" width="45"/>
             <div class="weather-forecast-temp">
-            <span class="weather-forecast-temp-max">${Math.round(forecastDay.max_temp)}°</span>/<span class="weather-forecast-temp-min">${Math.round(forecastDay.min_temp)}°</span>
+            <span class="weather-forecast-temp-max">${Math.round(celsiusTempmax)}°</span>/<span class="weather-forecast-temp-min">${Math.round(celsiusTempmin)}°</span>
             </div> 
             </div> 
         `;
