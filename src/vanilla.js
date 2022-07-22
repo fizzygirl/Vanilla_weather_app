@@ -57,7 +57,7 @@ function formatDay(timestamp){
 }
 
 function displayForecast(response){
-  console.log(response.data.data);
+  // console.log(response.data);
   let forecast = response.data.data;
 
     let forecastElement = document.querySelector("#forecast");
@@ -88,10 +88,11 @@ function displayForecast(response){
 }
 
 function getForecast(coordinates){
-  // console.log(coordinates);
+  
   let apiKey = "cb95f1d4c61a4b8897e33eeb2cc78c45";
   let apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&key=${apiKey}`;
     // console.log(apiUrl);
+    // console.log(coordinates);
     axios.get(apiUrl).then(displayForecast);
 }
 
@@ -108,14 +109,13 @@ function searchcity(event) {
   function search(city) {
     let apiKey = "cb95f1d4c61a4b8897e33eeb2cc78c45";
     let apiUrl = `https://api.weatherbit.io/v2.0/current?&city=${city}&key=${apiKey}`;
-    console.log(apiUrl);
+    // console.log(apiUrl);
     axios.get(apiUrl).then(displayWeatherCondition);
   }
 
   function displayWeatherCondition(response) {
     document.querySelector("h1").innerHTML = `${response.data.data[0].city_name} ${response.data.data[0].country_code}`;
-    celsiusTemp = response.data.data[0].app_temp;
-    document.querySelector("#temp").innerHTML = Math.round(celsiusTemp);
+    document.querySelector("#temp").innerHTML = Math.round(response.data.data[0].app_temp);
     document.querySelector("#weather-precipitation").innerHTML = Math.round(response.data.data[0].precip);
     document.querySelector("#weather-humidity").innerHTML =response.data.data[0].rh;
     document.querySelector("#weather-wind").innerHTML = Math.round(response.data.data[0].wind_spd);
@@ -128,7 +128,7 @@ function searchcity(event) {
   }
 
   function retrievePosition(event) {
-    event.preventDefault();
+    // event.preventDefault();
     navigator.geolocation.getCurrentPosition(showPosition);
   }
 
@@ -140,8 +140,7 @@ function searchcity(event) {
   }
 
   function showcurrentTemp(response) {
-    celsiusTemp = response.data.data[0].app_temp;
-    let temperature = Math.round(celsiusTemp);
+    let temperature = Math.round(response.data.data[0].app_temp);
     let city = response.data.data[0].city_name;
     let country = response.data.data[0].country_code;
     let weatherDes = response.data.data[0].weather.description;
@@ -179,4 +178,5 @@ form.addEventListener("submit", searchcity);
 let buttonCurrent = document.querySelector("#currentcity");
 buttonCurrent.addEventListener("submit", retrievePosition);
 
-search("Odesa");
+// search("Odesa");
+search(retrievePosition());
