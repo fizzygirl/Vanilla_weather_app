@@ -128,7 +128,7 @@ function searchcity(event) {
   }
 
   function retrievePosition(event) {
-    // event.preventDefault();
+    event.preventDefault();
     navigator.geolocation.getCurrentPosition(showPosition);
   }
 
@@ -178,5 +178,5 @@ form.addEventListener("submit", searchcity);
 let buttonCurrent = document.querySelector("#currentcity");
 buttonCurrent.addEventListener("submit", retrievePosition);
 
-// search("Odesa");
-search(retrievePosition());
+search("Odesa");
+// search(retrievePosition());
