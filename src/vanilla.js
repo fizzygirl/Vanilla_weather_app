@@ -161,22 +161,6 @@ function searchcity(event) {
     getForecast(response.data.data[0]);
   }
 
-  function showFahrenheitTemp(event){
-    event.preventDefault();
-    celsiuslink.classList.remove("active");
-    fahrenheitlink.classList.add("active");
-    let fahrenheitTemp = Math.round(celsiusTemp*(9/5))+32;
-    temp.innerHTML = `${fahrenheitTemp}`;
-    
-  }
-
-  function showcelsiusTemp(event){
-    event.preventDefault();
-    fahrenheitlink.classList.remove("active");
-    celsiuslink.classList.add("active");
-    temp.innerHTML = Math.round(celsiusTemp);
-  }
-
 let date = new Date();
 let currentday = document.querySelector("#currentday");
 currentday.innerHTML = formatDate();
@@ -189,17 +173,10 @@ let precip = document.querySelector("#weather-precipitation")
 let weatherHum = document.querySelector("#weather-humidity");
 let weatherWind = document.querySelector("#weather-wind");
 let iconElement = document.querySelector("#icon");
-let celsiusTemp = null;
 
 form.addEventListener("submit", searchcity);
 
 let buttonCurrent = document.querySelector("#currentcity");
 buttonCurrent.addEventListener("submit", retrievePosition);
-
-let fahrenheitlink = document.querySelector("#fahrenheit-link");
-fahrenheitlink.addEventListener("click", showFahrenheitTemp);
-
-let celsiuslink = document.querySelector("#celsius-link");
-celsiuslink.addEventListener("click", showcelsiusTemp);
 
 search("Odesa");

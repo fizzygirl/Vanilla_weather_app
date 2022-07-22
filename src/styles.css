@@ -54,12 +54,6 @@ h1{
   top: -24px;
 }
 
-.main-form .active{
-  color: whitesmoke;
-  cursor: default;
-  text-decoration: none;
-}
-
 .sun-icon {
   display: block;
   text-align: center;
