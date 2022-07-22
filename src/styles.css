@@ -4,12 +4,12 @@ body {
 }
 
 .main {
-  background: left/300% url("../img/mountains.jpg");
+  background: left/230% url("../img/mountains.jpg");
   color: whitesmoke;
   display: block;
   margin: 20px auto;
   max-width: 95%;
-  width: fit-content;
+  width:fit-content;
   border-radius: 10px;
 }
 
@@ -53,8 +53,8 @@ h1{
 .sun-icon {
   display: block;
   text-align: center;
-  margin: 0 0 40px 0;
-  width: 120px;
+  margin: 0 0 30px 0;
+  width: 110px;
 }
 
 .form-field {
@@ -73,7 +73,7 @@ h1{
 }
 
 .five-day-weather {
-  padding: 30px 0px;
+  padding: 10px 0px;
   text-align: center;
   font-size: 15px;
   font-weight: 300;
