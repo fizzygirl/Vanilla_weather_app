@@ -39,10 +39,6 @@ h1{
   line-height: 20px;
 }
 
-#button-weather {
-  margin-top: 20px;
-}
-
 .temperature {
   font-size: 48px;
   font-weight: 400;
@@ -77,7 +73,7 @@ h1{
 }
 
 .five-day-weather {
-  padding: 10px 0px;
+  padding: 30px 0px;
   text-align: center;
   font-size: 15px;
   font-weight: 300;

@@ -113,7 +113,7 @@ function searchcity(event) {
   }
 
   function displayWeatherCondition(response) {
-    document.querySelector("h1").innerHTML = `${response.data.data[0].city_name}, ${response.data.data[0].country_code}`;
+    document.querySelector("h1").innerHTML = `${response.data.data[0].city_name} ${response.data.data[0].country_code}`;
     celsiusTemp = response.data.data[0].app_temp;
     document.querySelector("#temp").innerHTML = Math.round(celsiusTemp);
     document.querySelector("#weather-precipitation").innerHTML = Math.round(response.data.data[0].precip);
@@ -149,7 +149,7 @@ function searchcity(event) {
     let weatherhumidity = response.data.data[0].rh;
     let weatherwind = Math.round(response.data.data[0].wind_spd);
 
-    h1.innerHTML = `${city}, ${country}`;
+    h1.innerHTML = `${city} ${country}`;
     temp.innerHTML = `${temperature}`;
     weatherDescr.innerHTML = `${weatherDes}`;
     precip.innerHTML = `${precipitation}`;
