@@ -99,5 +99,10 @@ hr {
 }
 
 .link:hover {
-  color: #eccdd4;
+  color: #8A818B;
+  text-decoration: none;
+}
+
+.link:visited{
+  color:  #8A818B;
 }
