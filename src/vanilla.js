@@ -50,7 +50,7 @@ function searchcity(event) {
   }
 
   function search(city) {
-    let apiKey = "cb95f1d4c61a4b8897e33eeb2cc78c45";
+    let apiKey = "39dd2a5453bd4fb2886dcabbfda048ec";
     let apiUrl = `https://api.weatherbit.io/v2.0/current?&city=${city}&key=${apiKey}`;
     console.log(apiUrl);
     axios.get(apiUrl).then(displayWeatherCondition);
